@@ -1,8 +1,7 @@
-module github.com/projectdiscovery/cloudlist
+module github.com/ducksify/cloudlist
 
-go 1.22.2
+go 1.24.2
 
-toolchain go1.24.1
 
 require (
 	git.arvancloud.ir/arvancloud/cdn-go-sdk v0.12.1
