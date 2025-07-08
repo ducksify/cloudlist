@@ -3,7 +3,7 @@ package hetzner
 import (
 	"context"
 	hetzner "github.com/hetznercloud/hcloud-go/hcloud"
-	"github.com/projectdiscovery/cloudlist/pkg/schema"
+	"github.com/ducksify/cloudlist/pkg/schema"
 )
 
 // instanceProvider is an instance provider for Hetzner Cloud API

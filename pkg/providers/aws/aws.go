@@ -21,7 +21,7 @@ import (
 	"github.com/aws/aws-sdk-go/service/s3"
 	"github.com/aws/aws-sdk-go/service/sts"
 	"github.com/pkg/errors"
-	"github.com/projectdiscovery/cloudlist/pkg/schema"
+	"github.com/ducksify/cloudlist/pkg/schema"
 	sliceutil "github.com/projectdiscovery/utils/slice"
 )
 

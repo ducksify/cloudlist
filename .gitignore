@@ -1,4 +1,5 @@
-cmd/cloudlist/cloudlist
+.vscode
+.idea
 .DS_Store
 dist
 .env

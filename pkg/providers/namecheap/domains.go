@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/namecheap/go-namecheap-sdk/v2/namecheap"
-	"github.com/projectdiscovery/cloudlist/pkg/schema"
+	"github.com/ducksify/cloudlist/pkg/schema"
 )
 
 // domainProvider is an domain provider for NameCheap API

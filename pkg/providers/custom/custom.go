@@ -5,7 +5,7 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/projectdiscovery/cloudlist/pkg/schema"
+	"github.com/ducksify/cloudlist/pkg/schema"
 	"github.com/projectdiscovery/gologger"
 	"github.com/projectdiscovery/networkpolicy"
 	"github.com/projectdiscovery/retryablehttp-go"

@@ -3,7 +3,7 @@ package scaleway
 import (
 	"context"
 
-	"github.com/projectdiscovery/cloudlist/pkg/schema"
+	"github.com/ducksify/cloudlist/pkg/schema"
 	"github.com/scaleway/scaleway-sdk-go/api/instance/v1"
 	"github.com/scaleway/scaleway-sdk-go/scw"
 )

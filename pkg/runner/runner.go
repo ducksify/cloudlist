@@ -7,9 +7,9 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/ducksify/cloudlist/pkg/inventory"
+	"github.com/ducksify/cloudlist/pkg/schema"
 	jsoniter "github.com/json-iterator/go"
-	"github.com/projectdiscovery/cloudlist/pkg/inventory"
-	"github.com/projectdiscovery/cloudlist/pkg/schema"
 	"github.com/projectdiscovery/gologger"
 )
 
@@ -46,6 +46,11 @@ func New(options *Options) (*Runner, error) {
 	}
 
 	return &Runner{config: config, options: options}, nil
+}
+
+// NewWithConfig creates a new runner instance with provided provider configuration
+func NewWithConfig(providerConfig schema.Options) (*Runner, error) {
+	return &Runner{config: providerConfig, options: &Options{}}, nil
 }
 
 // Enumerate performs the cloudlist enumeration process
@@ -249,6 +254,136 @@ func (r *Runner) Enumerate() {
 			gologger.Info().Msgf("Found %s for %s (%s)\n", logBuilder.String(), provider.Name(), provider.ID())
 		}
 	}
+}
+
+// EnumerateResources performs the cloudlist enumeration process and returns the resources
+func (r *Runner) EnumerateResources() []*schema.Resource {
+	finalConfig := schema.Options{}
+	services := []string{}
+	if r.options.Services != nil {
+		services = r.options.Services
+	}
+
+	for _, item := range r.config {
+		if item == nil {
+			continue
+		}
+		if _, ok := item["id"]; !ok {
+			item["id"] = ""
+		}
+		if len(services) > 0 {
+			item["services"] = strings.Join(services, ",")
+		}
+		// Validate and only pass the correct items to input
+		if len(r.options.Providers) != 0 || len(r.options.Id) != 0 {
+			if len(r.options.Providers) != 0 && !Contains(r.options.Providers, item["provider"]) {
+				continue
+			}
+			if len(r.options.Id) != 0 && !Contains(r.options.Id, item["id"]) {
+				continue
+			}
+			finalConfig = append(finalConfig, item)
+		} else {
+			finalConfig = append(finalConfig, item)
+		}
+	}
+
+	inventory, err := inventory.New(finalConfig)
+	if err != nil {
+		gologger.Fatal().Msgf("Could not create inventory: %s\n", err)
+	}
+
+	var allResources []*schema.Resource
+	deduplicator := schema.NewResourceDeduplicator()
+
+	for _, provider := range inventory.Providers {
+		gologger.Info().Msgf("Listing assets from provider: %s services: %s id: %s", provider.Name(), strings.Join(provider.Services(), ","), provider.ID())
+
+		instances, err := provider.Resources(context.Background())
+		if err != nil {
+			gologger.Warning().Msgf("Could not get resources for provider %s %s: %s\n", provider.Name(), provider.ID(), err)
+			continue
+		}
+
+		for _, instance := range instances.Items {
+			// Skip if already processed
+			if !deduplicator.ProcessResource(instance) {
+				continue
+			}
+
+			// Add the resource to our results
+			allResources = append(allResources, instance)
+		}
+
+		gologger.Info().Msgf("Found %d resources for %s (%s)\n", len(instances.Items), provider.Name(), provider.ID())
+	}
+
+	return allResources
+}
+
+// EnumerateResourcesWithConfig performs the cloudlist enumeration process with provided configuration and returns the resources
+func (r *Runner) EnumerateResourcesWithConfig(providerConfig schema.Options) []*schema.Resource {
+	finalConfig := schema.Options{}
+	services := []string{}
+	if r.options.Services != nil {
+		services = r.options.Services
+	}
+
+	for _, item := range providerConfig {
+		if item == nil {
+			continue
+		}
+		if _, ok := item["id"]; !ok {
+			item["id"] = ""
+		}
+		if len(services) > 0 {
+			item["services"] = strings.Join(services, ",")
+		}
+		// Validate and only pass the correct items to input
+		if len(r.options.Providers) != 0 || len(r.options.Id) != 0 {
+			if len(r.options.Providers) != 0 && !Contains(r.options.Providers, item["provider"]) {
+				continue
+			}
+			if len(r.options.Id) != 0 && !Contains(r.options.Id, item["id"]) {
+				continue
+			}
+			finalConfig = append(finalConfig, item)
+		} else {
+			finalConfig = append(finalConfig, item)
+		}
+	}
+
+	inventory, err := inventory.New(finalConfig)
+	if err != nil {
+		gologger.Fatal().Msgf("Could not create inventory: %s\n", err)
+	}
+
+	var allResources []*schema.Resource
+	deduplicator := schema.NewResourceDeduplicator()
+
+	for _, provider := range inventory.Providers {
+		gologger.Info().Msgf("Listing assets from provider: %s services: %s id: %s", provider.Name(), strings.Join(provider.Services(), ","), provider.ID())
+
+		instances, err := provider.Resources(context.Background())
+		if err != nil {
+			gologger.Warning().Msgf("Could not get resources for provider %s %s: %s\n", provider.Name(), provider.ID(), err)
+			continue
+		}
+
+		for _, instance := range instances.Items {
+			// Skip if already processed
+			if !deduplicator.ProcessResource(instance) {
+				continue
+			}
+
+			// Add the resource to our results
+			allResources = append(allResources, instance)
+		}
+
+		gologger.Info().Msgf("Found %d resources for %s (%s)\n", len(instances.Items), provider.Name(), provider.ID())
+	}
+
+	return allResources
 }
 
 func Contains(s []string, e string) bool {

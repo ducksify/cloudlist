@@ -5,7 +5,7 @@ import (
 
 	"github.com/Azure/azure-sdk-for-go/profiles/latest/trafficmanager/mgmt/trafficmanager"
 	"github.com/Azure/go-autorest/autorest"
-	"github.com/projectdiscovery/cloudlist/pkg/schema"
+	"github.com/ducksify/cloudlist/pkg/schema"
 )
 
 // trafficManagerProvider is a provider for Azure Traffic Manager Profiles

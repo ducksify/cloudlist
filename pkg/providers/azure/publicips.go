@@ -5,7 +5,7 @@ import (
 
 	"github.com/Azure/azure-sdk-for-go/profiles/latest/network/mgmt/network"
 	"github.com/Azure/go-autorest/autorest"
-	"github.com/projectdiscovery/cloudlist/pkg/schema"
+	"github.com/ducksify/cloudlist/pkg/schema"
 )
 
 // publicIPProvider is a public ip provider for Azure API

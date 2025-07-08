@@ -7,7 +7,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/projectdiscovery/cloudlist/pkg/schema/validate"
+	"github.com/ducksify/cloudlist/pkg/schema/validate"
 	mapsutil "github.com/projectdiscovery/utils/maps"
 )
 
