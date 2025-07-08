@@ -5,7 +5,7 @@ import (
 	"strings"
 
 	r1c "git.arvancloud.ir/arvancloud/cdn-go-sdk"
-	"github.com/projectdiscovery/cloudlist/pkg/schema"
+	"github.com/ducksify/cloudlist/pkg/schema"
 )
 
 var Services = []string{"dns"}

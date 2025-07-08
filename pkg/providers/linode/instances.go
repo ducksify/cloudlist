@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/linode/linodego"
-	"github.com/projectdiscovery/cloudlist/pkg/schema"
+	"github.com/ducksify/cloudlist/pkg/schema"
 )
 
 // instanceProvider is an instance provider for linode API

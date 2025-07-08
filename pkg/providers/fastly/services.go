@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/fastly/go-fastly/v3/fastly"
-	"github.com/projectdiscovery/cloudlist/pkg/schema"
+	"github.com/ducksify/cloudlist/pkg/schema"
 )
 
 //
@@ -33,7 +33,7 @@ func (d *serviceProvider) GetResource(ctx context.Context) (*schema.Resources, e
 				Provider: providerName,
 				DNSName:  domain.Name,
 				ID:       d.id,
-				Service: service.Name,
+				Service:  service.Name,
 			})
 		}
 	}

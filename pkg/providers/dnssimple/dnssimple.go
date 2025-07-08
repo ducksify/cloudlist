@@ -6,7 +6,7 @@ import (
 	"strings"
 
 	"github.com/dnsimple/dnsimple-go/dnsimple"
-	"github.com/projectdiscovery/cloudlist/pkg/schema"
+	"github.com/ducksify/cloudlist/pkg/schema"
 	errorutil "github.com/projectdiscovery/utils/errors"
 )
 

@@ -3,7 +3,7 @@ package inventory
 import (
 	"os"
 
-	"github.com/projectdiscovery/cloudlist/pkg/schema"
+	"github.com/ducksify/cloudlist/pkg/schema"
 	"github.com/projectdiscovery/gologger"
 	"gopkg.in/yaml.v2"
 )

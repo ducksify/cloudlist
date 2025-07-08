@@ -6,7 +6,7 @@ import (
 
 	r1c "git.arvancloud.ir/arvancloud/cdn-go-sdk"
 	"github.com/pkg/errors"
-	"github.com/projectdiscovery/cloudlist/pkg/schema"
+	"github.com/ducksify/cloudlist/pkg/schema"
 )
 
 // dnsProvider is a provider for ArvanCloud DNS resources

@@ -4,7 +4,7 @@ import (
 	"context"
 
 	"github.com/digitalocean/godo"
-	"github.com/projectdiscovery/cloudlist/pkg/schema"
+	"github.com/ducksify/cloudlist/pkg/schema"
 )
 
 // instanceProvider is an instance provider for digitalocean API

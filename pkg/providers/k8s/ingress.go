@@ -3,7 +3,7 @@ package k8s
 import (
 	"context"
 
-	"github.com/projectdiscovery/cloudlist/pkg/schema"
+	"github.com/ducksify/cloudlist/pkg/schema"
 	v1 "k8s.io/api/networking/v1"
 )
 
@@ -43,7 +43,7 @@ func (k *K8sIngressProvider) GetResource(ctx context.Context) (*schema.Resources
 					Provider:   providerName,
 					ID:         k.id,
 					PublicIPv4: ip.IP,
-					Service:   k.name(),
+					Service:    k.name(),
 				})
 			}
 			if ip.Hostname == "" {

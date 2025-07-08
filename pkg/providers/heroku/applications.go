@@ -4,7 +4,7 @@ import (
 	"context"
 
 	heroku "github.com/heroku/heroku-go/v5"
-	"github.com/projectdiscovery/cloudlist/pkg/schema"
+	"github.com/ducksify/cloudlist/pkg/schema"
 )
 
 // instanceProvider is an instance provider for Heroku API

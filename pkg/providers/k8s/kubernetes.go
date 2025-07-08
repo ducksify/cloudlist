@@ -6,7 +6,7 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/projectdiscovery/cloudlist/pkg/schema"
+	"github.com/ducksify/cloudlist/pkg/schema"
 	errorutil "github.com/projectdiscovery/utils/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes"

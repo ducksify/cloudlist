@@ -6,7 +6,7 @@ import (
 
 	"github.com/namecheap/go-namecheap-sdk/v2/namecheap"
 
-	"github.com/projectdiscovery/cloudlist/pkg/schema"
+	"github.com/ducksify/cloudlist/pkg/schema"
 	iputil "github.com/projectdiscovery/utils/ip"
 )
 

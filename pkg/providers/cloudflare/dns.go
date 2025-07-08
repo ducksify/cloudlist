@@ -5,7 +5,7 @@ import (
 
 	"github.com/cloudflare/cloudflare-go"
 	"github.com/pkg/errors"
-	"github.com/projectdiscovery/cloudlist/pkg/schema"
+	"github.com/ducksify/cloudlist/pkg/schema"
 )
 
 // dnsProvider is a provider for cloudflare dns resources
@@ -41,7 +41,7 @@ func (d *dnsProvider) GetResource(ctx context.Context) (*schema.Resources, error
 				Provider: providerName,
 				DNSName:  record.Name,
 				ID:       d.id,
-				Service: d.name(),
+				Service:  d.name(),
 			})
 			// Skip CNAME records values to discard duplidate data
 			if record.Type == "CNAME" {

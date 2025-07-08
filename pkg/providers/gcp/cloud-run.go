@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/url"
 
-	"github.com/projectdiscovery/cloudlist/pkg/schema"
+	"github.com/ducksify/cloudlist/pkg/schema"
 	run "google.golang.org/api/run/v1"
 )
 
@@ -26,7 +26,7 @@ func (d *cloudRunProvider) GetResource(ctx context.Context) (*schema.Resources, 
 	if err != nil {
 		return nil, fmt.Errorf("could not get services: %s", err)
 	}
-	
+
 	for _, service := range services {
 		serviceUrl, _ := url.Parse(service.Status.Url)
 		resource := &schema.Resource{

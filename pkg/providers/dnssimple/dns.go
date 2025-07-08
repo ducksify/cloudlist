@@ -5,7 +5,7 @@ import (
 	"log"
 
 	"github.com/dnsimple/dnsimple-go/dnsimple"
-	"github.com/projectdiscovery/cloudlist/pkg/schema"
+	"github.com/ducksify/cloudlist/pkg/schema"
 )
 
 // dnsProvider handles DNS records for DNSSimple

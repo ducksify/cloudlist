@@ -5,7 +5,7 @@ import (
 	"strings"
 
 	hetzner "github.com/hetznercloud/hcloud-go/hcloud"
-	"github.com/projectdiscovery/cloudlist/pkg/schema"
+	"github.com/ducksify/cloudlist/pkg/schema"
 )
 
 var Services = []string{"instance"}

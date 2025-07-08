@@ -6,7 +6,7 @@ import (
 	"strings"
 
 	"github.com/linode/linodego"
-	"github.com/projectdiscovery/cloudlist/pkg/schema"
+	"github.com/ducksify/cloudlist/pkg/schema"
 	"golang.org/x/oauth2"
 )
 
