@@ -31,7 +31,7 @@ require (
 	github.com/projectdiscovery/utils v0.4.20
 	github.com/scaleway/scaleway-sdk-go v1.0.0-beta.14
 	github.com/stretchr/testify v1.10.0
-	golang.org/x/oauth2 v0.15.0
+	golang.org/x/oauth2 v0.27.0
 	google.golang.org/api v0.126.0
 	gopkg.in/yaml.v2 v2.4.0
 	k8s.io/api v0.30.0
@@ -41,8 +41,7 @@ require (
 
 require (
 	aead.dev/minisign v0.2.0 // indirect
-	cloud.google.com/go/compute v1.20.1 // indirect
-	cloud.google.com/go/compute/metadata v0.2.3 // indirect
+	cloud.google.com/go/compute/metadata v0.3.0 // indirect
 	github.com/Azure/go-autorest v14.2.0+incompatible // indirect
 	github.com/Azure/go-autorest/autorest/adal v0.9.18 // indirect
 	github.com/Azure/go-autorest/autorest/azure/cli v0.4.5 // indirect
